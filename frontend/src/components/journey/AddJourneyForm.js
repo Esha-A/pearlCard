@@ -18,7 +18,8 @@ export default class AddJourneyForm extends Component {
     this.state = {
       journeyToAdd: this.props.journeyToAdd,
       localError: "",
-      showSuccess: false
+      showSuccess: false,
+      editSuccess: false
     };
   }
 
@@ -65,13 +66,13 @@ export default class AddJourneyForm extends Component {
       const journeyDate = new Date(journeyToAdd.timestamp);
       const now = new Date();
       if (journeyDate > now) {
-        this.setState({ localError: "Forbidden: Cannot Create a Future Journey", showSuccess: false });
+        this.setState({ localError: "Forbidden: Cannot Create a Future Journey", showSuccess: false, editSuccess: false });
         return;
       }
     }
     this.setState({ localError: "" });
     onSave(journeyToAdd);
-    // Reset form fields after save (for new journey, not edit)
+    // Show success banner for add or edit
     if (!journeyToAdd.id) {
       this.setState({
         journeyToAdd: {
@@ -80,7 +81,13 @@ export default class AddJourneyForm extends Component {
           username: username || journeyToAdd.username || "",
         },
         localError: "",
-        showSuccess: true
+        showSuccess: true,
+        editSuccess: false
+      });
+    } else {
+      this.setState({
+        editSuccess: true,
+        showSuccess: false
       });
     }
   };
@@ -90,7 +97,7 @@ export default class AddJourneyForm extends Component {
     const { userId, route } = this.state.journeyToAdd;
     const { errorMessage } = this.props;
     const displayUsername = this.props.username || this.state.journeyToAdd.username || "";
-    const { localError, showSuccess } = this.state;
+    const { localError, showSuccess, editSuccess } = this.state;
 
     const isEdit = !!this.state.journeyToAdd.id;
     return (
@@ -103,6 +110,11 @@ export default class AddJourneyForm extends Component {
           {showSuccess && (
             <div className="alert alert-success" role="alert">
               Successfully added a new journey
+            </div>
+          )}
+          {editSuccess && (
+            <div className="alert alert-success" role="alert">
+              Journey edited successfully
             </div>
           )}
           {(errorMessage || localError) && (

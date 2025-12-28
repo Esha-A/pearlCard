@@ -147,6 +147,7 @@ All backend dependencies are specified in the `Pipfile`. Install them using `pip
 	```
 4. **Apply migrations:**
 	```sh
+ 	python manage.py makemigrations
 	python manage.py migrate
 	```
 5. **(Optional) Create a superuser:**

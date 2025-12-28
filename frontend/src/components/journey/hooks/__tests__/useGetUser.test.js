@@ -1,5 +1,4 @@
-import { renderHook } from '@testing-library/react-hooks';
-import { act } from 'react-dom/test-utils';
+import { renderHook, act } from '@testing-library/react';
 import axios from 'axios';
 import { useGetUser } from '../useGetUser';
 
