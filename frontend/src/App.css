@@ -1,0 +1,219 @@
+/* Style for filters sidebar to match table card */
+.journey-filters-sidebar {
+  background: #fff;
+  border-radius: 8px;
+  padding: 24px;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+@media (max-width: 900px) {
+  .journey-filters-sidebar {
+    margin-bottom: 24px;
+    margin-right: 0 !important;
+    padding: 20px 12px;
+  }
+}
+/* Responsive stacking for journey main flex row */
+@media (max-width: 900px) {
+  .journey-main-flex-row {
+    flex-direction: column !important;
+    align-items: stretch;
+  }
+  .journey-filters-sidebar {
+    max-width: 100% !important;
+    margin-right: 0 !important;
+    width: 100%;
+  }
+}
+/* Ensure journey-table-section and filters-sidebar are side by side in .main-flex-row */
+.main-flex-row {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  width: 100%;
+  margin-top: 24px;
+  padding: 0 24px;
+}
+
+@media (max-width: 900px) {
+  .main-flex-row {
+    flex-direction: column;
+    padding: 0 8px;
+  }
+  .main-flex-row > .filters-sidebar {
+    max-width: 100%;
+    margin-right: 0;
+    margin-bottom: 20px;
+  }
+  .main-flex-row > .journey-table-section {
+    max-width: 100%;
+    min-width: 0;
+  }
+}
+/* Responsive flex layout for filters and table */
+.main-flex-row {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  width: 100%;
+  margin-top: 24px;
+  padding: 0 24px;
+}
+
+@media (max-width: 900px) {
+  .main-flex-row {
+    flex-direction: column;
+    padding: 0 8px;
+  }
+  .main-flex-row > div {
+    max-width: 100% !important;
+    margin-right: 0 !important;
+  }
+}
+/* Make the main table container longer */
+.col-md-9.col-sm-12 {
+  min-height: 700px;
+  
+}
+/* Checkbox cell style for journey table */
+.checkbox-cell {
+  width: 40px;
+  text-align: center;
+}
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Sidebar for filters */
+.filters-sidebar {
+  padding: 1rem;
+  background: #f8f9fa;
+  border-radius: 4px;
+}
+
+.filters-sidebar .form-control,
+.filters-sidebar .btn {
+  margin-bottom: 0.75rem;
+}
+
+/* Make table headers look clickable when sortable */
+.sortable {
+  cursor: pointer;
+  user-select: none;
+}
+
+/* Selected table row highlight */
+.table-row-selected {
+  background-color: #e9f7ef !important;
+}
+
+/* Sidebar action row: place edit/delete side-by-side with equal widths */
+.sidebar-action-row {
+  display: flex;
+  gap: 0.5rem;
+}
+.sidebar-action-row .btn {
+  flex: 1 1 0;
+}
+
+/* Common action button sizing to keep Add/Edit/Delete consistent */
+.action-btn {
+  min-width: 130px;
+  padding-top: 0.45rem;
+  padding-bottom: 0.45rem;
+  font-size: 0.95rem;
+}
+
+/* Make the journeys table scroll when it grows beyond ~10 rows */
+.table-container {
+  max-height: 550px; /* approx 10 rows + header */
+  overflow: auto;
+}
+
+.table-container table {
+  margin-bottom: 0; /* avoid extra space inside scroll area */
+}
+
+/* Make the table header sticky inside the scrollable table container */
+.table-container thead th {
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  background: #fff;
+}
+
+.table-container thead th:first-child {
+  z-index: 6; /* ensure checkbox header stays above rows */
+}
+
+/* Multiselect dropdown for routes */
+.multiselect-dropdown {
+  position: relative;
+}
+.multiselect-panel {
+  position: absolute;
+  z-index: 20;
+  background: white;
+  border: 1px solid #dee2e6;
+  padding: 0.5rem;
+  margin-top: 0.25rem;
+  width: 100%;
+  max-height: 200px;
+  overflow: auto;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.06);
+}
+.multiselect-option {
+  display: block;
+  margin-bottom: 0.25rem;
+  cursor: pointer;
+}
+
+/* Make the dropdown toggle look like other inputs (form-control) */
+.multiselect-toggle {
+  text-align: left;
+  background: #fff;
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+  padding: .375rem .75rem;
+  color: #495057;
+}
+.multiselect-toggle:focus {
+  outline: none;
+  box-shadow: 0 0 0 0.2rem rgba(0,123,255,0.25);
+}
