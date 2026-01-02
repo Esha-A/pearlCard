@@ -17,7 +17,7 @@ class UsersConfig(AppConfig):
 
         from pearlCard.models import PearlCard
         from .models import User
-        # Create a PearlCard with the next available id and assign to user
-        if not User.objects.filter(name='Max Mayfield', role='User').exists():
+        # Only create a single demo user if none exists
+        if not User.objects.filter(name='Max Mayfield', role='USER').exists():
             pearl_card = PearlCard.objects.create(active=True)
-            User.objects.create(name='Max Mayfield', pearlCard=pearl_card)
+            User.objects.create(name='Max Mayfield', role='USER', pearlCard=pearl_card)
